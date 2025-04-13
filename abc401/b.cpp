@@ -1,18 +1,25 @@
-#include <bits/stdc++.h>
-#include <string>
-#include <vector>
 #include <iostream>
+#include <vector>
+#include <string>
 int main()
 {
     int n;
     std::cin >> n;
-    std::vector<string> s;
-    // for(int i = 0; i < n; i++)std::cin >> s.at(i);
 
-    // std::cout << "------" << std::endl;
-    // std::cout << n << std::endl;
-    // for(int i = 0; i < n; i++)std::cout << s[n] << std::endl;
+    bool login = false;
+    int login_error = 0;
 
+    for(int i = 0; i < n; i++)
+    {
+        std::string s;
+        std::cin >> s;
+
+        if(s == "login") login = true;
+        else if(s == "logout") login = false;
+
+        if(s == "private" && login == false)login_error++;
+    }
+    std::cout << login_error << std::endl;
 
     return 0;
 }
