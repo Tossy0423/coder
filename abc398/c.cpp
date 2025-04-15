@@ -1,31 +1,26 @@
 #include <bits/stdc++.h>
-#include <vector>
 
 int main()
 {
     int n;
     std::cin >> n;
-
-    std::vector<unsigned int> a(n);
+    std::vector<int> a(n);
     for(int i = 0; i < n; i++)std::cin >> a.at(i);
-    for(int i = 0; i < n; i++)std::cout << a[i] << " ";
 
-    std::sort(a.rbegin(), a.rend());
+    std::unordered_map<int, int> cnt;
+    for(int i = 0; i < n; i++)cnt[a[i]] += 1;
 
-    bool flag = false;
+    int max = -1, ans = -1;
     for(int i = 0; i < n; i++)
     {
-        for(int j = 0; j < n; j++)
+        if(2 <= cnt[a[i]])continue;
+        if(max < a[i])
         {
-            if(a[i] != a[j] && i != j )flag = false;
-            else flag = true;
-            // std::cout << a[i] << ", " << a[j] << std::endl;
+            max = a[i];
+            ans = i + 1;
         }
     }
-
-    if(flag)std::cout << "-1";
-    else std::cout << "--1";
-
+    std::cout << ans;
 
     return 0;
 }
