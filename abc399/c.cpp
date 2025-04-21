@@ -16,11 +16,14 @@ int main()
         a -= 1; 
         b -= 1;
         
+        // 同じ頂点かどうかを判定するところ
         if(uf.same(a, b))
         {
+            // std::cout << a << ", " << b << std::endl;
             ans++;
             continue;
         }
+        // 頂点をマージ(連結成分)にするところ
         uf.merge(a, b);
     }
 
